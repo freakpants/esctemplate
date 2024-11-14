@@ -24,7 +24,45 @@ async function loadSongs() {
     }
 }
 
-// Function to draw the selected songs and thumbnails on the canvas
+// Function to draw centered text within a specified area
+function drawCenteredText(ctx, text, x, y, width, height) {
+    ctx.font = 'bold 48px Arial';
+    ctx.fillStyle = '#fff';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    const centerX = x + width / 2;
+    const centerY = y + height / 2;
+    ctx.fillText(text, centerX, centerY);
+}
+
+// Function to draw thumbnails while preserving aspect ratio
+function drawThumbnail(ctx, image, x, y, maxWidth, maxHeight) {
+    const aspectRatio = image.width / image.height;
+    let drawWidth = maxWidth;
+    let drawHeight = maxHeight;
+
+    if (aspectRatio > 1) {
+        drawWidth = maxHeight * aspectRatio;
+    } else {
+        drawHeight = maxWidth / aspectRatio;
+    }
+
+    if (drawWidth > maxWidth) {
+        drawWidth = maxWidth;
+        drawHeight = drawWidth / aspectRatio;
+    }
+
+    if (drawHeight > maxHeight) {
+        drawHeight = maxHeight;
+        drawWidth = drawHeight * aspectRatio;
+    }
+
+    const drawX = x + (maxWidth - drawWidth);
+    const drawY = y + (maxHeight - drawHeight) / 2;
+    ctx.drawImage(image, drawX, drawY, drawWidth, drawHeight);
+}
+
+// Function to generate the canvas image
 async function generateImage() {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
@@ -42,77 +80,54 @@ async function generateImage() {
     ctx.fillStyle = '#712775';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Load thumbnails
-    const thumbnail1 = new Image();
-    const thumbnail2 = new Image();
-    thumbnail1.src = song1.snippet.thumbnails.maxres.url;
-    thumbnail2.src = song2.snippet.thumbnails.maxres.url;
-
     const canvasWidth = canvas.width;
     const canvasHeight = canvas.height;
     const labelWidth = canvasWidth / 2;
     const thumbnailWidth = canvasWidth / 2;
     const thumbnailHeight = canvasHeight / 2;
 
-    // Draw text labels centered within their quarters
-    function drawCenteredText(text, x, y, width, height) {
-        ctx.font = 'bold 48px Arial';
-        ctx.fillStyle = '#fff';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
+    drawCenteredText(ctx, 'Who I want to win:', 0, 0, labelWidth, canvasHeight / 2);
+    drawCenteredText(ctx, 'Who I think will win:', 0, canvasHeight / 2, labelWidth, canvasHeight / 2);
 
-        // Calculate center point within the given area
-        const centerX = x + width / 2;
-        const centerY = y + height / 2;
+    // Load and draw thumbnails
+    const thumbnail1 = new Image();
+    const thumbnail2 = new Image();
 
-        ctx.fillText(text, centerX, centerY);
-    }
+    thumbnail1.src = song1.snippet.thumbnails.maxres.url;
+    thumbnail2.src = song2.snippet.thumbnails.maxres.url;
 
-    // Draw the text blocks
-    drawCenteredText('Who I want to win:', 0, 0, labelWidth, canvasHeight / 2);
-    drawCenteredText('Who I think will win:', 0, canvasHeight / 2, labelWidth, canvasHeight / 2);
-
-    // Function to draw the thumbnails with preserved aspect ratio and alignment
-    function drawThumbnail(image, x, y, maxWidth, maxHeight) {
-        const aspectRatio = image.width / image.height;
-        let drawWidth = maxWidth;
-        let drawHeight = maxHeight;
-
-        if (aspectRatio > 1) { // Landscape orientation
-            drawWidth = maxHeight * aspectRatio;
-        } else { // Portrait orientation
-            drawHeight = maxWidth / aspectRatio;
-        }
-
-        if (drawWidth > maxWidth) {
-            drawWidth = maxWidth;
-            drawHeight = drawWidth / aspectRatio;
-        }
-
-        if (drawHeight > maxHeight) {
-            drawHeight = maxHeight;
-            drawWidth = drawHeight * aspectRatio;
-        }
-
-        const drawX = x + (maxWidth - drawWidth);
-        const drawY = y + (maxHeight - drawHeight) / 2;
-
-        ctx.drawImage(image, drawX, drawY, drawWidth, drawHeight);
-    }
-
-    // Draw thumbnails when loaded
+    let imagesLoaded = 0;
+    
     thumbnail1.onload = () => {
-        thumbnail2.onload = () => {
-            // Draw first thumbnail aligned to the right edge
-            drawThumbnail(thumbnail1, labelWidth, 0, thumbnailWidth, thumbnailHeight);
-            // Draw second thumbnail aligned to the right edge
-            drawThumbnail(thumbnail2, labelWidth, thumbnailHeight, thumbnailWidth, thumbnailHeight);
-
-            // Show the share button
-            const shareBtn = document.getElementById('shareBtn');
-            shareBtn.hidden = false;
-        };
+        imagesLoaded++;
+        if (imagesLoaded === 2) drawImages();
     };
+    thumbnail2.onload = () => {
+        imagesLoaded++;
+        if (imagesLoaded === 2) drawImages();
+    };
+
+    function drawImages() {
+        drawThumbnail(ctx, thumbnail1, labelWidth, 0, thumbnailWidth, thumbnailHeight);
+        drawThumbnail(ctx, thumbnail2, labelWidth, thumbnailHeight, thumbnailWidth, thumbnailHeight);
+        generateAltText(song1, song2);
+    }
+}
+
+// Function to generate alt text and display it below the canvas
+function generateAltText(song1, song2) {
+    const altText = `Who I want to win: ${song1.snippet.title}. Who I think will win: ${song2.snippet.title}.`;
+    document.getElementById('altText').textContent = altText;
+}
+
+// Function to copy alt text to clipboard
+function copyAltText() {
+    const altText = document.getElementById('altText').textContent;
+    navigator.clipboard.writeText(altText).then(() => {
+        alert('Alt text copied to clipboard!');
+    }).catch(err => {
+        console.error('Failed to copy text: ', err);
+    });
 }
 
 document.addEventListener('DOMContentLoaded', loadSongs);
