@@ -42,40 +42,77 @@ async function generateImage() {
     ctx.fillStyle = '#712775';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Draw labels
-    ctx.font = 'bold 36px Arial';
-    ctx.fillStyle = '#fff';
-    ctx.fillText('Who I want to win:', 50, 60);
-    ctx.fillText('Who I think will win:', 50, 360);
-
     // Load thumbnails
     const thumbnail1 = new Image();
     const thumbnail2 = new Image();
-
     thumbnail1.src = song1.snippet.thumbnails.maxres.url;
     thumbnail2.src = song2.snippet.thumbnails.maxres.url;
 
+    const canvasWidth = canvas.width;
+    const canvasHeight = canvas.height;
+    const labelWidth = canvasWidth / 2;
+    const thumbnailWidth = canvasWidth / 2;
+    const thumbnailHeight = canvasHeight / 2;
+
+    // Draw text labels centered within their quarters
+    function drawCenteredText(text, x, y, width, height) {
+        ctx.font = 'bold 48px Arial';
+        ctx.fillStyle = '#fff';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        // Calculate center point within the given area
+        const centerX = x + width / 2;
+        const centerY = y + height / 2;
+
+        ctx.fillText(text, centerX, centerY);
+    }
+
+    // Draw the text blocks
+    drawCenteredText('Who I want to win:', 0, 0, labelWidth, canvasHeight / 2);
+    drawCenteredText('Who I think will win:', 0, canvasHeight / 2, labelWidth, canvasHeight / 2);
+
+    // Function to draw the thumbnails with preserved aspect ratio and alignment
+    function drawThumbnail(image, x, y, maxWidth, maxHeight) {
+        const aspectRatio = image.width / image.height;
+        let drawWidth = maxWidth;
+        let drawHeight = maxHeight;
+
+        if (aspectRatio > 1) { // Landscape orientation
+            drawWidth = maxHeight * aspectRatio;
+        } else { // Portrait orientation
+            drawHeight = maxWidth / aspectRatio;
+        }
+
+        if (drawWidth > maxWidth) {
+            drawWidth = maxWidth;
+            drawHeight = drawWidth / aspectRatio;
+        }
+
+        if (drawHeight > maxHeight) {
+            drawHeight = maxHeight;
+            drawWidth = drawHeight * aspectRatio;
+        }
+
+        const drawX = x + (maxWidth - drawWidth);
+        const drawY = y + (maxHeight - drawHeight) / 2;
+
+        ctx.drawImage(image, drawX, drawY, drawWidth, drawHeight);
+    }
+
     // Draw thumbnails when loaded
     thumbnail1.onload = () => {
-        ctx.drawImage(thumbnail1, 50, 80, 500, 281); // Draw first thumbnail
-        drawSecondThumbnail();
-    };
-
-    function drawSecondThumbnail() {
         thumbnail2.onload = () => {
-            ctx.drawImage(thumbnail2, 50, 380, 500, 281); // Draw second thumbnail
-
-            // Draw song titles below each thumbnail
-            ctx.font = '24px Arial';
-            ctx.fillStyle = '#fff';
-            ctx.fillText(song1.snippet.title, 600, 200);
-            ctx.fillText(song2.snippet.title, 600, 500);
+            // Draw first thumbnail aligned to the right edge
+            drawThumbnail(thumbnail1, labelWidth, 0, thumbnailWidth, thumbnailHeight);
+            // Draw second thumbnail aligned to the right edge
+            drawThumbnail(thumbnail2, labelWidth, thumbnailHeight, thumbnailWidth, thumbnailHeight);
 
             // Show the share button
             const shareBtn = document.getElementById('shareBtn');
             shareBtn.hidden = false;
         };
-    }
+    };
 }
 
 document.addEventListener('DOMContentLoaded', loadSongs);
