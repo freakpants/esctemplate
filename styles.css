@@ -35,6 +35,7 @@ canvas {
     color: #333;
     max-width: 90%;
     word-wrap: break-word;
+    user-select: none; /* Prevents text selection */
 }
 
 button {
@@ -62,7 +63,7 @@ button:active {
     body {
         padding: 10px;
     }
-    
+
     select {
         font-size: 20px;
         padding: 14px;
