@@ -8,6 +8,14 @@ body {
     margin: 0;
 }
 
+p{
+    user-select: none; 
+}
+
+button{
+    user-select: none; 
+}
+
 select {
     width: 100%;
     max-width: 400px;
