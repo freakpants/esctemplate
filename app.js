@@ -30,8 +30,18 @@ function extractFilenameFromUrl(url) {
     return `${parts[4]}.jpg`; // Extracts the video ID and appends .jpg
 }
 
+// Function to load an image and return a Promise
+function loadImage(src) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+    });
+}
+
 // Function to generate the canvas image using local images
-function generateImage() {
+async function generateImage() {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     const song1Select = document.getElementById('song1');
@@ -61,20 +71,17 @@ function generateImage() {
     const thumbnail1Filename = extractFilenameFromUrl(song1.snippet.thumbnails.maxres.url);
     const thumbnail2Filename = extractFilenameFromUrl(song2.snippet.thumbnails.maxres.url);
 
-    // Load local images based on extracted filenames
-    const thumbnail1 = new Image();
-    const thumbnail2 = new Image();
+    try {
+        // Load images using Promises
+        const thumbnail1 = await loadImage(`images/${thumbnail1Filename}`);
+        const thumbnail2 = await loadImage(`images/${thumbnail2Filename}`);
 
-    thumbnail1.src = `images/${thumbnail1Filename}`;
-    thumbnail2.src = `images/${thumbnail2Filename}`;
-
-    thumbnail1.onload = () => {
-        thumbnail2.onload = () => {
-            drawThumbnail(ctx, thumbnail1, labelWidth, 0, thumbnailWidth, thumbnailHeight);
-            drawThumbnail(ctx, thumbnail2, labelWidth, thumbnailHeight, thumbnailWidth, thumbnailHeight);
-            generateAltText(song1, song2);
-        };
-    };
+        drawThumbnail(ctx, thumbnail1, labelWidth, 0, thumbnailWidth, thumbnailHeight);
+        drawThumbnail(ctx, thumbnail2, labelWidth, thumbnailHeight, thumbnailWidth, thumbnailHeight);
+        generateAltText(song1, song2);
+    } catch (error) {
+        console.error('Error loading images:', error);
+    }
 }
 
 // Function to draw centered text
@@ -121,7 +128,6 @@ function generateAltText(song1, song2) {
     document.getElementById('altText').textContent = altText;
 }
 
-
 // Function to download the canvas image
 function downloadCanvasImage() {
     const canvas = document.getElementById('canvas');
@@ -133,6 +139,5 @@ function downloadCanvasImage() {
         URL.revokeObjectURL(link.href);
     }, 'image/png');
 }
-
 
 document.addEventListener('DOMContentLoaded', loadSongs);
