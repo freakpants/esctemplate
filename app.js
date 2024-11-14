@@ -63,7 +63,7 @@ function drawThumbnail(ctx, image, x, y, maxWidth, maxHeight) {
 }
 
 // Function to generate the canvas image
-async function generateImage() {
+function generateImage() {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     const song1Select = document.getElementById('song1');
@@ -75,7 +75,6 @@ async function generateImage() {
     const song1 = songsData.find(song => song.snippet.resourceId.videoId === song1Id);
     const song2 = songsData.find(song => song.snippet.resourceId.videoId === song2Id);
 
-    // Clear canvas and set background color
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = '#712775';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -89,29 +88,19 @@ async function generateImage() {
     drawCenteredText(ctx, 'Who I want to win:', 0, 0, labelWidth, canvasHeight / 2);
     drawCenteredText(ctx, 'Who I think will win:', 0, canvasHeight / 2, labelWidth, canvasHeight / 2);
 
-    // Load and draw thumbnails
     const thumbnail1 = new Image();
     const thumbnail2 = new Image();
 
     thumbnail1.src = song1.snippet.thumbnails.maxres.url;
     thumbnail2.src = song2.snippet.thumbnails.maxres.url;
 
-    let imagesLoaded = 0;
-    
     thumbnail1.onload = () => {
-        imagesLoaded++;
-        if (imagesLoaded === 2) drawImages();
+        thumbnail2.onload = () => {
+            drawThumbnail(ctx, thumbnail1, labelWidth, 0, thumbnailWidth, thumbnailHeight);
+            drawThumbnail(ctx, thumbnail2, labelWidth, thumbnailHeight, thumbnailWidth, thumbnailHeight);
+            generateAltText(song1, song2);
+        };
     };
-    thumbnail2.onload = () => {
-        imagesLoaded++;
-        if (imagesLoaded === 2) drawImages();
-    };
-
-    function drawImages() {
-        drawThumbnail(ctx, thumbnail1, labelWidth, 0, thumbnailWidth, thumbnailHeight);
-        drawThumbnail(ctx, thumbnail2, labelWidth, thumbnailHeight, thumbnailWidth, thumbnailHeight);
-        generateAltText(song1, song2);
-    }
 }
 
 // Function to generate alt text and display it below the canvas
@@ -129,5 +118,19 @@ function copyAltText() {
         console.error('Failed to copy text: ', err);
     });
 }
+
+function downloadCanvasImage() {
+    const canvas = document.getElementById('canvas');
+    canvas.toBlob((blob) => {
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'montesong.png';
+        link.click();
+
+        // Clean up the URL object to free memory
+        URL.revokeObjectURL(link.href);
+    }, 'image/png');
+}
+
 
 document.addEventListener('DOMContentLoaded', loadSongs);
