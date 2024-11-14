@@ -4,15 +4,51 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #f0f0f0;
-    color: #333;
-}
-
-.selector {
-    margin: 10px 0;
+    padding: 20px;
+    margin: 0;
 }
 
 canvas {
-    margin-top: 20px;
-    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 90vw;
+    height: auto;
+    border: 2px solid #ccc;
     background-color: #eee;
+    margin-top: 20px;
+}
+
+#altText {
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: center;
+    color: #333;
+    max-width: 90%;
+    word-wrap: break-word;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #712775;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5a1f5a;
+}
+
+@media (max-width: 600px) {
+    canvas {
+        max-width: 100%;
+        height: auto;
+    }
+
+    button {
+        width: 100%;
+        font-size: 14px;
+    }
 }
