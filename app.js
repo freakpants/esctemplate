@@ -121,16 +121,26 @@ function copyAltText() {
 
 function downloadCanvasImage() {
     const canvas = document.getElementById('canvas');
-    canvas.toBlob((blob) => {
+    
+    // Check if the browser supports the `toBlob` method
+    if (canvas.toBlob) {
+        canvas.toBlob((blob) => {
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'montesong.png';
+            link.click();
+            URL.revokeObjectURL(link.href);
+        }, 'image/png');
+    } else {
+        // Fallback for mobile browsers that don't support `toBlob`
+        const dataUrl = canvas.toDataURL('image/png');
         const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
+        link.href = dataUrl;
         link.download = 'montesong.png';
         link.click();
-
-        // Clean up the URL object to free memory
-        URL.revokeObjectURL(link.href);
-    }, 'image/png');
+    }
 }
+
 
 
 document.addEventListener('DOMContentLoaded', loadSongs);
