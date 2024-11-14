@@ -1,0 +1,246 @@
+{
+  "kind": "youtube#playlistItemListResponse",
+  "etag": "elo4ltfJFaVNc0DcSja4UKidljw",
+  "nextPageToken": "EAAajgFQVDpDQVVpRURVek1rSkNNRUkwTWpKR1FrTTNSVU1vQVVpYThxV2l4TS1KQTFBQldrVWlRMmxLVVZSR09VaGpWR3hLV25wQ1dsTlhOVlZoYTJzMVQwVldhR1ZGYkVOYWFscFJVMjB4VDFadVZuWk9hbWhOUldkM1NUTmZZVGwxVVZsUmEwc3RTVE5CU1NJ",
+  "items": [
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "3qQtQB2MWVANP6d7bZEFP1y4IjA",
+      "id": "UExfR3E5SWcwWUluVGpJOThFYXhJQmY2UEptTlZ1bzY4TC4xMkVGQjNCMUM1N0RFNEUx",
+      "snippet": {
+        "publishedAt": "2024-11-09T14:40:36Z",
+        "channelId": "UC_nrZjc51NGl3tcPT4QC2FQ",
+        "title": "KEJT - Obala raja | MONTESONG 2024 🇲🇪",
+        "description": "MONTESONG 2024  🇲🇪  🎶\n\nKEJT - Obala raja\n\nMuzika: Hugo Smeh, Katarina Bogićević i James Gillespie\nTekst: Katarina Bogićević i James Gillespie\nAranžman: Hugo Smeh i Chris Young\n//\nMix master i Sound engineer: Chris Young\n\n📅 27. novembar\n📍 Dvorana Voco, Podgorica\n📍TVCG/Live YouTube\n\nPratite nas na društvenim mrežama:\n\nInstagram 👉 https://www.instagram.com/montesong.rtcg/\nFacebook 👉 https://www.facebook.com/people/Eurovision-Montenegro/61565976943456/\nTikTok 👉 https://www.tiktok.com/@eurovision.montesong\nX 👉 https://x.com/eurovision_rtcg\n\nO festivalu Montesong čitajte na RTCG Portalu: https://rtcg.me/montesong.html\n\nViše o Evroviziji na: https://eurovision.tv\n\n#eurovision #montesong #montenegro\n#eurovisionmontenegro #eurovision2025\n#crnagora #rtcg #eui #ebu",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/xBErBWIW_1c/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/xBErBWIW_1c/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/xBErBWIW_1c/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/xBErBWIW_1c/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/xBErBWIW_1c/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Montesong",
+        "playlistId": "PL_Gq9Ig0YInTjI98EaxIBf6PJmNVuo68L",
+        "position": 0,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "xBErBWIW_1c"
+        },
+        "videoOwnerChannelTitle": "Montesong",
+        "videoOwnerChannelId": "UC_nrZjc51NGl3tcPT4QC2FQ"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "G9T6KsfTNXvBNWUIS09r-n721H4",
+      "id": "UExfR3E5SWcwWUluVGpJOThFYXhJQmY2UEptTlZ1bzY4TC5DQUNERDQ2NkIzRUQxNTY1",
+      "snippet": {
+        "publishedAt": "2024-11-09T14:47:36Z",
+        "channelId": "UC_nrZjc51NGl3tcPT4QC2FQ",
+        "title": "Milena Vučić - Škorpija | MONTESONG 2024 🇲🇪",
+        "description": "MONTESONG 2024  🇲🇪  🎶\n\nMilena Vučić - Škorpija\n\nMuzika: Alen Stajić, Marko Peruničić, Nebojša Arežina (Atelje Trag)\nTekst: Sanja Vučić\nAranžman: Alen Stajić, Marko Peruničić, Nebojša Arežina (Atelje Trag)\n\nMixing inženjer: Marko Peruničić, Nebojša Arežina\nProducenti: Marko Peruničić, Nebojša Arežina\n\n📅 27. novembar\n📍 Dvorana Voco, Podgorica\n📍TVCG/Live YouTube\n\nPratite nas na društvenim mrežama:\n\nInstagram 👉 https://www.instagram.com/montesong.rtcg/\nFacebook 👉 https://www.facebook.com/people/Eurovision-Montenegro/61565976943456/\nTikTok 👉 https://www.tiktok.com/@eurovision.montesong\nX 👉 https://x.com/eurovision_rtcg\n\nO festivalu Montesong čitajte na RTCG Portalu: https://rtcg.me/montesong.html\n\nViše o Evroviziji na: https://eurovision.tv\n\n#eurovision #montesong #montenegro\n#eurovisionmontenegro #eurovision2025\n#crnagora #rtcg #eui #ebu",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/swQ54GOKepk/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/swQ54GOKepk/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/swQ54GOKepk/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/swQ54GOKepk/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/swQ54GOKepk/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Montesong",
+        "playlistId": "PL_Gq9Ig0YInTjI98EaxIBf6PJmNVuo68L",
+        "position": 1,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "swQ54GOKepk"
+        },
+        "videoOwnerChannelTitle": "Montesong",
+        "videoOwnerChannelId": "UC_nrZjc51NGl3tcPT4QC2FQ"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "UyQtFlLIozSaoNcgbu7NNTyzeeY",
+      "id": "UExfR3E5SWcwWUluVGpJOThFYXhJQmY2UEptTlZ1bzY4TC4wOTA3OTZBNzVEMTUzOTMy",
+      "snippet": {
+        "publishedAt": "2024-11-09T14:37:30Z",
+        "channelId": "UC_nrZjc51NGl3tcPT4QC2FQ",
+        "title": "Isak Šabanović - Ljeto, ljeto, ljeto | MONTESONG 2024 🇲🇪",
+        "description": "MONTESONG 2024  🇲🇪  🎶\n\nIsak Šabanović - Ljeto, ljeto, ljeto\n\nMuzika: Leontina\nTekst: Leontina\nAranžman: Nemanja Filipović\n\nMix i master: Željko Veljković\n\n📅 27. novembar\n📍 Dvorana Voco, Podgorica\n📍TVCG/Live YouTube\n\nPratite nas na društvenim mrežama:\n\nInstagram 👉 https://www.instagram.com/montesong.rtcg/\nFacebook 👉 https://www.facebook.com/people/Eurovision-Montenegro/61565976943456/\nTikTok 👉 https://www.tiktok.com/@eurovision.montesong\nX 👉 https://x.com/eurovision_rtcg\n\nO festivalu Montesong čitajte na RTCG Portalu: https://rtcg.me/montesong.html\n\nViše o Evroviziji na: https://eurovision.tv\n\n#eurovision #montesong #montenegro\n#eurovisionmontenegro #eurovision2025\n#crnagora #rtcg #eui #ebu",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/lN8Ys2BDSLY/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/lN8Ys2BDSLY/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/lN8Ys2BDSLY/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/lN8Ys2BDSLY/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/lN8Ys2BDSLY/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Montesong",
+        "playlistId": "PL_Gq9Ig0YInTjI98EaxIBf6PJmNVuo68L",
+        "position": 2,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "lN8Ys2BDSLY"
+        },
+        "videoOwnerChannelTitle": "Montesong",
+        "videoOwnerChannelId": "UC_nrZjc51NGl3tcPT4QC2FQ"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "Q9LjP53cdpcX1lIRSs6uXfQpzaI",
+      "id": "UExfR3E5SWcwWUluVGpJOThFYXhJQmY2UEptTlZ1bzY4TC4wMTcyMDhGQUE4NTIzM0Y5",
+      "snippet": {
+        "publishedAt": "2024-11-09T14:28:58Z",
+        "channelId": "UC_nrZjc51NGl3tcPT4QC2FQ",
+        "title": "Dolce Hera - Repeat | MONTESONG 2024 🇲🇪",
+        "description": "MONTESONG 2024  🇲🇪  🎶\n\nDolce Hera - Repeat\n\nMuzika: Aleksandra Prelevic Palladino, Marko Ćaćić, Todor Tadić\nTekst: Aleksandra Prelevic Palladino\nAranžman: Aleksandra Prelevic Palladino, Marko Ćaćić, Todor Tadić\n\nProducenti: Marko Ćaćić i Todor Tadić\n\n📅 27. novembar\n📍 Dvorana Voco, Podgorica\n📍TVCG/Live YouTube\n\nPratite nas na društvenim mrežama:\n\nInstagram 👉 https://www.instagram.com/montesong.rtcg/\nFacebook 👉 https://www.facebook.com/people/Eurovision-Montenegro/61565976943456/\nTikTok 👉 https://www.tiktok.com/@eurovision.montesong\nX 👉 https://x.com/eurovision_rtcg\n\nO festivalu Montesong čitajte na RTCG Portalu: https://rtcg.me/montesong.html\n\nViše o Evroviziji na: https://eurovision.tv\n\n#eurovision #montesong #montenegro\n#eurovisionmontenegro #eurovision2025\n#crnagora #rtcg #eui #ebu",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/iaQ8hmuBYVM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/iaQ8hmuBYVM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/iaQ8hmuBYVM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/iaQ8hmuBYVM/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/iaQ8hmuBYVM/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Montesong",
+        "playlistId": "PL_Gq9Ig0YInTjI98EaxIBf6PJmNVuo68L",
+        "position": 3,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "iaQ8hmuBYVM"
+        },
+        "videoOwnerChannelTitle": "Montesong",
+        "videoOwnerChannelId": "UC_nrZjc51NGl3tcPT4QC2FQ"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "vfJRFVc0RdHX26W_H7zfZHE7MS4",
+      "id": "UExfR3E5SWcwWUluVGpJOThFYXhJQmY2UEptTlZ1bzY4TC41Mzk2QTAxMTkzNDk4MDhF",
+      "snippet": {
+        "publishedAt": "2024-11-09T15:07:25Z",
+        "channelId": "UC_nrZjc51NGl3tcPT4QC2FQ",
+        "title": "Đurđa - To ljubav je | MONTESONG 2024 🇲🇪",
+        "description": "MONTESONG 2024  🇲🇪  🎶\n\nĐurđa - To ljubav je\n\nMuzika: Kristina Kovač, Jonas Jensen\nTekst: Kristina Kovač, Oliver Patocska, Ðurđa Petrović-Poljak\nAranžman: Charlie en vogue, Aleksandar Filipović\n\nProdukcija: Charlie en vogue\nMix i mastering: Ivan Kljajić, Filip Kuranji\n\n📅 27. novembar\n📍 Dvorana Voco, Podgorica\n📍TVCG/Live YouTube\n\nPratite nas na društvenim mrežama:\n\nInstagram 👉 https://www.instagram.com/montesong.rtcg/\nFacebook 👉 https://www.facebook.com/people/Eurovision-Montenegro/61565976943456/\nTikTok 👉 https://www.tiktok.com/@eurovision.montesong\nX 👉 https://x.com/eurovision_rtcg\n\nO festivalu Montesong čitajte na RTCG Portalu: https://rtcg.me/montesong.html\n\nViše o Evroviziji na: https://eurovision.tv\n\n#eurovision #montesong #montenegro\n#eurovisionmontenegro #eurovision2025\n#crnagora #rtcg #eui #ebu",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Vg018gI03Tg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Vg018gI03Tg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Vg018gI03Tg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/Vg018gI03Tg/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/Vg018gI03Tg/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Montesong",
+        "playlistId": "PL_Gq9Ig0YInTjI98EaxIBf6PJmNVuo68L",
+        "position": 4,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "Vg018gI03Tg"
+        },
+        "videoOwnerChannelTitle": "Montesong",
+        "videoOwnerChannelId": "UC_nrZjc51NGl3tcPT4QC2FQ"
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 16,
+    "resultsPerPage": 5
+  }
+}

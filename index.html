@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Montesong Song Selector</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Select Your Montesong Picks</h1>
+    <div class="selector">
+        <label for="song1">Pick Song 1:</label>
+        <select id="song1"></select>
+    </div>
+    <div class="selector">
+        <label for="song2">Pick Song 2:</label>
+        <select id="song2"></select>
+    </div>
+    <button onclick="generateImage()">Generate Image</button>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <button id="shareBtn" hidden>Share on Bluesky</button>
+    <script src="app.js"></script>
+</body>
+</html>
