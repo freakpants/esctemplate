@@ -37,33 +37,39 @@ async function generateImage() {
     const song1 = songsData.find(song => song.snippet.resourceId.videoId === song1Id);
     const song2 = songsData.find(song => song.snippet.resourceId.videoId === song2Id);
 
-    // Clear canvas and set background
+    // Clear canvas and set background color
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = '#712775';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Draw thumbnails
+    // Draw labels
+    ctx.font = 'bold 36px Arial';
+    ctx.fillStyle = '#fff';
+    ctx.fillText('Who I want to win:', 50, 60);
+    ctx.fillText('Who I think will win:', 50, 360);
+
+    // Load thumbnails
     const thumbnail1 = new Image();
     const thumbnail2 = new Image();
 
     thumbnail1.src = song1.snippet.thumbnails.maxres.url;
     thumbnail2.src = song2.snippet.thumbnails.maxres.url;
 
-    // Load and draw the thumbnails on canvas
+    // Draw thumbnails when loaded
     thumbnail1.onload = () => {
-        ctx.drawImage(thumbnail1, 50, 50, 500, 281); // Draw first thumbnail
+        ctx.drawImage(thumbnail1, 50, 80, 500, 281); // Draw first thumbnail
         drawSecondThumbnail();
     };
 
     function drawSecondThumbnail() {
         thumbnail2.onload = () => {
-            ctx.drawImage(thumbnail2, 50, 350, 500, 281); // Draw second thumbnail
+            ctx.drawImage(thumbnail2, 50, 380, 500, 281); // Draw second thumbnail
 
-            // Draw song titles below thumbnails
-            ctx.font = '32px Arial';
+            // Draw song titles below each thumbnail
+            ctx.font = '24px Arial';
             ctx.fillStyle = '#fff';
-            ctx.fillText(`1. ${song1.snippet.title}`, 600, 200);
-            ctx.fillText(`2. ${song2.snippet.title}`, 600, 500);
+            ctx.fillText(song1.snippet.title, 600, 200);
+            ctx.fillText(song2.snippet.title, 600, 500);
 
             // Show the share button
             const shareBtn = document.getElementById('shareBtn');
