@@ -1,7 +1,7 @@
 let songsData = [];
 
 // Fetch songs data from the selected JSON file
-async function loadSongs(contest = 'montesongs') {
+async function loadSongs(contest = 'supernova') {
     try {
         const fileName = contest === 'montesongs' ? 'montesongs.json' : 'supernova.json';
         const response = await fetch(fileName);
