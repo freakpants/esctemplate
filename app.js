@@ -203,3 +203,29 @@ function drawThumbnailWithText(ctx, image, x, y, maxWidth, maxHeight, title) {
     ctx.fillText(title, textX, textY);   // White text
 }
 
+function downloadCanvasImage() {
+    const canvas = document.getElementById('canvas');
+    const song1Select = document.getElementById('song1');
+    const song2Select = document.getElementById('song2');
+    const contestSelector = document.getElementById('contestSelector');
+
+    const selectedContest = contestSelector.value;
+    const song1Text = song1Select.options[song1Select.selectedIndex].textContent;
+    const song2Text = song2Select.options[song2Select.selectedIndex].textContent;
+
+    // Create a descriptive filename
+    const filename = `${selectedContest} - fav - ${song1Text} - win - ${song2Text}.png`;
+
+    canvas.toBlob((blob) => {
+        if (!blob) {
+            console.error('Canvas is empty or rendering failed.');
+            return;
+        }
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        link.click();
+        URL.revokeObjectURL(link.href);
+    }, 'image/png');
+}
+
