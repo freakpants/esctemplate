@@ -1,15 +1,21 @@
 let songsData = [];
 
-// Fetch songs data from the JSON file and populate the dropdowns
-async function loadSongs() {
+// Fetch songs data from the selected JSON file
+async function loadSongs(contest = 'montesongs') {
     try {
-        const response = await fetch('montesongs.json');
+        const fileName = contest === 'montesongs' ? 'montesongs.json' : 'supernova.json';
+        const response = await fetch(fileName);
         const data = await response.json();
         songsData = data.items;
 
         const song1Select = document.getElementById('song1');
         const song2Select = document.getElementById('song2');
 
+        // Clear existing options
+        song1Select.innerHTML = '';
+        song2Select.innerHTML = '';
+
+        // Populate dropdowns
         songsData.forEach(song => {
             const option = document.createElement('option');
             const title = song.snippet.title;
@@ -46,9 +52,11 @@ async function generateImage() {
     const ctx = canvas.getContext('2d');
     const song1Select = document.getElementById('song1');
     const song2Select = document.getElementById('song2');
+    const contestSelector = document.getElementById('contestSelector');
 
     const song1Id = song1Select.value;
     const song2Id = song2Select.value;
+    const selectedContest = contestSelector.value;
 
     const song1 = songsData.find(song => song.snippet.resourceId.videoId === song1Id);
     const song2 = songsData.find(song => song.snippet.resourceId.videoId === song2Id);
@@ -76,13 +84,20 @@ async function generateImage() {
         const thumbnail1 = await loadImage(`images/${thumbnail1Filename}`);
         const thumbnail2 = await loadImage(`images/${thumbnail2Filename}`);
 
-        drawThumbnail(ctx, thumbnail1, labelWidth, 0, thumbnailWidth, thumbnailHeight);
-        drawThumbnail(ctx, thumbnail2, labelWidth, thumbnailHeight, thumbnailWidth, thumbnailHeight);
+        if (selectedContest === 'supernova') {
+            drawThumbnailWithText(ctx, thumbnail1, labelWidth, 0, thumbnailWidth, thumbnailHeight, song1.snippet.title);
+            drawThumbnailWithText(ctx, thumbnail2, labelWidth, thumbnailHeight, thumbnailWidth, thumbnailHeight, song2.snippet.title);
+        } else {
+            drawThumbnail(ctx, thumbnail1, labelWidth, 0, thumbnailWidth, thumbnailHeight);
+            drawThumbnail(ctx, thumbnail2, labelWidth, thumbnailHeight, thumbnailWidth, thumbnailHeight);
+        }
         generateAltText(song1, song2);
     } catch (error) {
         console.error('Error loading images:', error);
     }
 }
+
+
 
 // Function to draw centered text
 function drawCenteredText(ctx, text, x, y, width, height) {
@@ -128,16 +143,63 @@ function generateAltText(song1, song2) {
     document.getElementById('altText').textContent = altText;
 }
 
-// Function to download the canvas image
-function downloadCanvasImage() {
-    const canvas = document.getElementById('canvas');
-    canvas.toBlob((blob) => {
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = 'montesong.png';
-        link.click();
-        URL.revokeObjectURL(link.href);
-    }, 'image/png');
+// Add contest selection logic
+document.addEventListener('DOMContentLoaded', () => {
+    const contestSelector = document.getElementById('contestSelector');
+    contestSelector.addEventListener('change', (event) => {
+        loadSongs(event.target.value);
+    });
+
+    // Load default contest songs
+    loadSongs();
+});
+
+function drawThumbnailWithText(ctx, image, x, y, maxWidth, maxHeight, title) {
+    const aspectRatio = image.width / image.height;
+    let drawWidth = maxWidth;
+    let drawHeight = maxHeight;
+
+    if (aspectRatio > 1) {
+        drawWidth = maxHeight * aspectRatio;
+    } else {
+        drawHeight = maxWidth / aspectRatio;
+    }
+
+    if (drawWidth > maxWidth) {
+        drawWidth = maxWidth;
+        drawHeight = drawWidth / aspectRatio;
+    }
+
+    if (drawHeight > maxHeight) {
+        drawHeight = maxHeight;
+        drawWidth = drawHeight * aspectRatio;
+    }
+
+    const drawX = x + (maxWidth - drawWidth);
+    const drawY = y + (maxHeight - drawHeight) / 2;
+    ctx.drawImage(image, drawX, drawY, drawWidth, drawHeight);
+
+    // Draw the title on top of the image, ensuring text width matches image width
+    ctx.font = 'bold 36px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = 'black';
+    ctx.fillStyle = 'white';
+
+    const textX = drawX + drawWidth / 2;
+    const textY = drawY + drawHeight - 50; // Position near the bottom
+    const maxTextWidth = drawWidth - 20; // Add padding to avoid edge clipping
+
+    // Use canvas measureText to scale down font size if text exceeds width
+    let fontSize = 36;
+    ctx.font = `bold ${fontSize}px Arial`;
+    while (ctx.measureText(title).width > maxTextWidth && fontSize > 10) {
+        fontSize -= 2;
+        ctx.font = `bold ${fontSize}px Arial`;
+    }
+
+    ctx.strokeText(title, textX, textY); // Black border
+    ctx.fillText(title, textX, textY);   // White text
 }
 
-document.addEventListener('DOMContentLoaded', loadSongs);

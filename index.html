@@ -2,11 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Montesong Song Selector</title>
+    <title>National Selections Song Selector</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Select Your Montesong Picks</h1>
+    <h1>Select Your Contest Picks</h1>
+
+    <!-- Contest Selector -->
+    <div class="selector">
+        <label for="contestSelector">Select Contest:</label>
+        <select id="contestSelector">
+            <option value="supernova">🇱🇻 Supernova</option>
+            <option value="montesongs">🇲🇪 Montesong</option>
+        </select>
+    </div>
+
     <div class="selector">
         <label for="song1">Who I want to win:</label>
         <select id="song1"></select>
@@ -15,6 +25,7 @@
         <label for="song2">Who I think will win:</label>
         <select id="song2"></select>
     </div>
+    
     <button onclick="generateImage()">Generate Image</button>
     <canvas id="canvas" width="1200" height="675"></canvas>
     <p id="altText" style="margin-top: 20px;"></p>
