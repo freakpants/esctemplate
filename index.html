@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>National Selections Song Selector</title>
     <link rel="stylesheet" href="styles.css">
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://cdn.jsdelivr.net/npm/world-flags-sprite@0.0.2/stylesheets/flags32.min.css"
+/>
 </head>
 <body>
     <h1>Select Your Contest Picks</h1>
@@ -12,7 +17,7 @@
     <div class="selector">
         <label for="contestSelector">Select Contest:</label>
         <select id="contestSelector">
-            <option value="supernova">🇱🇻 Supernova</option>
+            <option class="f32 flag lv" value="supernova">🇱🇻 Supernova</option>
             <option value="montesongs">🇲🇪 Montesong</option>
         </select>
     </div>
@@ -32,5 +37,6 @@
     <button onclick="copyAltText()">Copy Alt Text</button>
     <button onclick="downloadCanvasImage()">Download Image</button>
     <script src="app.js"></script>
+
 </body>
 </html>
